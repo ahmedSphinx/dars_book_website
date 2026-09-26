@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="دفتر الدرس - تطبيق إدارة الحصص والطلاب للمعلمين">
+    <meta name="keywords" content="دفتر الدرس, إدارة الطلاب, تطبيق المعلمين, حصص خصوصية">
+    <meta name="author" content="DarsBook">
+    <meta name="theme-color" content="#4F46E5">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="دفتر الدرس - DarsBook">
+    <meta property="og:description" content="تطبيق إدارة الحصص والطلاب للمعلمين">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dars-book.web.app">
+
+    <title>دفتر الدرس - DarsBook</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cairo': ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #EC4899 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.15);
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                            </path>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold gradient-text">دفتر الدرس</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="#features" class="text-gray-600 hover:text-primary-600 transition-colors">المميزات</a>
+                    <a href="#download" class="text-gray-600 hover:text-primary-600 transition-colors">تحميل</a>
+                    <a href="privacy.html" class="text-gray-600 hover:text-primary-600 transition-colors">الخصوصية</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-right">
+                    <div
+                        class="inline-flex items-center gap-2 bg-primary-50 text-primary-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                        <span class="w-2 h-2 bg-primary-500 rounded-full pulse-animation"></span>
+                        تطبيق مجاني للمعلمين
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+                        أدر حصصك وطلابك
+                        <span class="gradient-text block">بكل سهولة</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        دفتر الدرس هو التطبيق الأمثل للمعلمين لإدارة الحصص الخصوصية،
+                        تتبع المدفوعات، وتنظيم بيانات الطلاب في مكان واحد.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#download"
+                            class="gradient-bg text-white px-8 py-4 rounded-2xl font-bold text-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2 shadow-lg shadow-primary-500/30">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M17.523 2H6.477C5.768 2 5.5 2.768 5.5 3.477v17.046c0 .709.268 1.477.977 1.477h11.046c.709 0 .977-.768.977-1.477V3.477C18.5 2.768 18.232 2 17.523 2zM12 20.5c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z" />
+                            </svg>
+                            حمّل التطبيق الآن
+                        </a>
+                        <a href="#features"
+                            class="bg-white text-gray-700 px-8 py-4 rounded-2xl font-bold text-lg border-2 border-gray-200 hover:border-primary-300 transition-colors flex items-center justify-center gap-2">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            اكتشف المميزات
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 gradient-bg opacity-20 blur-3xl rounded-full"></div>
+                    <div class="relative float-animation">
+                        <div class="bg-white rounded-3xl shadow-2xl p-8 max-w-md mx-auto">
+                            <div class="flex items-center gap-4 mb-6">
+                                <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center">
+                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-900">دفتر الدرس</h3>
+                                    <p class="text-gray-500">إدارة ذكية للمعلمين</p>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-3 bg-green-50 p-4 rounded-xl">
+                                    <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-green-800">25 طالب نشط</p>
+                                        <p class="text-sm text-green-600">هذا الشهر</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 bg-blue-50 p-4 rounded-xl">
+                                    <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-blue-800">5,250 ج.م</p>
+                                        <p class="text-sm text-blue-600">إيرادات الشهر</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 bg-purple-50 p-4 rounded-xl">
+                                    <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-purple-800">48 حصة</p>
+                                        <p class="text-sm text-purple-600">تم تسجيلها</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">مميزات التطبيق</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">كل ما تحتاجه لإدارة عملك كمعلم في تطبيق واحد</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div
+                    class="card-hover bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-3xl border border-blue-100">
+                    <div class="w-14 h-14 bg-blue-500 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">إدارة الطلاب</h3>
+                    <p class="text-gray-600">أضف بيانات طلابك بسهولة مع إمكانية استيراد جهات الاتصال وتتبع حالة كل طالب.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div
+                    class="card-hover bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-3xl border border-green-100">
+                    <div class="w-14 h-14 bg-green-500 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">تسجيل الحصص</h3>
+                    <p class="text-gray-600">سجّل حصصك اليومية مع تتبع الحضور والغياب وإضافة الملزمات تلقائياً.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div
+                    class="card-hover bg-gradient-to-br from-purple-50 to-violet-50 p-8 rounded-3xl border border-purple-100">
+                    <div class="w-14 h-14 bg-purple-500 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">تتبع المدفوعات</h3>
+                    <p class="text-gray-600">تابع المدفوعات والمستحقات لكل طالب مع تقارير مالية شاملة.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div
+                    class="card-hover bg-gradient-to-br from-orange-50 to-amber-50 p-8 rounded-3xl border border-orange-100">
+                    <div class="w-14 h-14 bg-orange-500 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">تقارير وإحصائيات</h3>
+                    <p class="text-gray-600">احصل على تقارير تفصيلية عن أدائك وإيراداتك الشهرية والسنوية.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div
+                    class="card-hover bg-gradient-to-br from-pink-50 to-rose-50 p-8 rounded-3xl border border-pink-100">
+                    <div class="w-14 h-14 bg-pink-500 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">أمان البيانات</h3>
+                    <p class="text-gray-600">بياناتك محمية بتشفير قوي مع إمكانية قفل التطبيق ببصمة الإصبع.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div
+                    class="card-hover bg-gradient-to-br from-cyan-50 to-teal-50 p-8 rounded-3xl border border-cyan-100">
+                    <div class="w-14 h-14 bg-cyan-500 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">مزامنة سحابية</h3>
+                    <p class="text-gray-600">بياناتك محفوظة في السحابة ومتاحة من أي جهاز في أي وقت.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="gradient-bg rounded-3xl p-12 text-center text-white relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10">
+                    <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <defs>
+                            <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5" />
+                            </pattern>
+                        </defs>
+                        <rect width="100" height="100" fill="url(#grid)" />
+                    </svg>
+                </div>
+                <div class="relative">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-4">حمّل التطبيق الآن</h2>
+                    <p class="text-xl opacity-90 mb-8">ابدأ في تنظيم عملك كمعلم بطريقة احترافية</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#"
+                            class="bg-white text-gray-900 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center gap-3">
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M17.523 2H6.477C5.768 2 5.5 2.768 5.5 3.477v17.046c0 .709.268 1.477.977 1.477h11.046c.709 0 .977-.768.977-1.477V3.477C18.5 2.768 18.232 2 17.523 2zM12 20.5c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25zM16.5 17h-9V5h9v12z" />
+                            </svg>
+                            <div class="text-right">
+                                <div class="text-xs opacity-70">حمّل من</div>
+                                <div class="text-lg">Google Play</div>
+                            </div>
+                        </a>
+                        <a href="#"
+                            class="bg-white/20 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:bg-white/30 transition-colors flex items-center justify-center gap-3 border border-white/30">
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                            </svg>
+                            <div class="text-right">
+                                <div class="text-xs opacity-70">قريباً على</div>
+                                <div class="text-lg">App Store</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                                </path>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-bold">دفتر الدرس</span>
+                    </div>
+                    <p class="text-gray-400">تطبيق إدارة الحصص والطلاب للمعلمين</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#features" class="hover:text-white transition-colors">المميزات</a></li>
+                        <li><a href="#download" class="hover:text-white transition-colors">تحميل التطبيق</a></li>
+                        <li><a href="privacy.html" class="hover:text-white transition-colors">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">تواصل معنا</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>
+                            <a href="mailto:ahmedabas1012@gmail.com"
+                                class="hover:text-white transition-colors flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                                ahmedabas1012@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 دفتر الدرس - DarsBook. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
